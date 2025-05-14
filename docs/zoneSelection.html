@@ -35,7 +35,7 @@
             localStorage.setItem('selectedDate', formatDate(date));
             localStorage.setItem('selectedChildren', children);
             localStorage.setItem('selectedAdults', adults);
-            localStorage.setItem('selectedRegion', region);
+            localStorage.setItem('selectedRegion', getRegionName(region));
             // Переходим на страницу бронирования
             window.location.href = 'booking.html';
         }
