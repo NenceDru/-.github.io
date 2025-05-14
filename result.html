@@ -26,7 +26,7 @@
 
             //console.log(document.querySelectorAll(".location-info a"))
             document.querySelectorAll(".location-card a").forEach(a => {
-            a.setAttribute('href', `/zone-selection.html?date=${formatDate(date)}&adults=${adults}&children=${children}&region=${getRegionName(region)}`)
+            a.setAttribute('href', `/zoneSelection.html?date=${formatDate(date)}&adults=${adults}&children=${children}&region=${getRegionName(region)}`)
         });
         }
         
@@ -94,7 +94,7 @@
                     <div class="prices">
                         <span>от 8 000 ₽</span>
                     </div>
-                    <a href="/zone-selection.html?date=12&adults=${searchParams.adults}&children=${searchParams.children}" class="select-button">Выбрать зону</a>
+                    <a href="/zoneSelection.html?date=12&adults=${searchParams.adults}&children=${searchParams.children}" class="select-button">Выбрать зону</a>
                 </div>
             </div>
 
