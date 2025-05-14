@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты поиска - Праздник в каждый дом</title>
+    <link href="/css.css" rel="stylesheet">
+    <script defer>
+        // Функция для получения параметров из URL
+        function getSearchParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const region = urlParams.get('region');
+            const date = urlParams.get('date');
+            const adults = urlParams.get('adults');
+            const children = urlParams.get('children');
+            
+            // Обновляем информацию о параметрах поиска
+            document.getElementById('search-region').textContent = getRegionName(region);
+            document.getElementById('search-date').textContent = formatDate(date);
+            document.getElementById('search-guests').textContent = `${adults} взрослых, ${children} детей`;
+
+            // Обновляем даты в карточках локаций
+            document.querySelectorAll('.date').forEach(el => {
+                el.textContent = formatDate(date);
+            });
+
+            //console.log(document.querySelectorAll(".location-info a"))
+            document.querySelectorAll(".location-card a").forEach(a => {
+            a.setAttribute('href', `/zone-selection.html?date=${formatDate(date)}&adults=${adults}&children=${children}&region=${getRegionName(region)}`)
+        });
+        }
+        
+        // Преобразуем код региона в название
+        function getRegionName(regionCode) {
+            const regions = {
+                'moscow': 'Москва',
+                'spb': 'Санкт-Петербург',
+                'kazan': 'Казань',
+                'ekb': 'Екатеринбург'
+            };
+            return regions[regionCode] || regionCode;
+        }
+        
+        // Форматируем дату в привычный вид
+        function formatDate(dateString) {
+            if (!dateString) return 'Дата не указана';
+            
+            const date = new Date(dateString);
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            return date.toLocaleDateString('ru-RU', options);
+        }
+        
+        // Вызываем функцию при загрузке страницы
+        window.onload = getSearchParams;
+    </script>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://i.pinimg.com/736x/14/70/67/147067dd0bc6f00aec1ba41aedbe9d50.jpg" alt="Праздник в каждый дом"> Праздник в каждый дом
+            </div>
+            <nav class="main-menu">
+                <ul>
+                    <li><a href="/#promo">Акции</a></li>
+                    <li><a href="/#search">Поиск</a></li>
+                    <li><a href="/index.html">Главная страница</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main class="container search-results">
+        <h1>Доступные локации</h1>
+        <div class="search-params">
+            <p><strong>Регион:</strong> <span id="search-region">Москва</span></p>
+            <p><strong>Дата:</strong> <span id="search-date">15 декабря 2023</span></p>
+            <p><strong>Гости:</strong> <span id="search-guests">5 взрослых, 10 детей</span></p>
+        </div>
+
+        <div class="locations-list">
+            <!-- Локация 1 -->
+            <div class="location-card">
+                <div class="location-image">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Детский центр Волшебный замок">
+                </div>
+                <div class="location-info">
+                    <h2>Детский центр "Волшебный замок"</h2>
+                    <p class="address">ул. Праздничная, 15</p>
+                    <p class="date">15 декабря 2023</p>
+                    <p class="zones">Доступно 3 зоны</p>
+                    <div class="prices">
+                        <span>от 8 000 ₽</span>
+                    </div>
+                    <a href="/zone-selection.html?date=12&adults=${searchParams.adults}&children=${searchParams.children}" class="select-button">Выбрать зону</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer style="margin-top: 223px"; class="footer">
+
+        <div class="container footer-content">
+            <div class="footer-phone">
+                <p>8 (800) 111-20-20</p>
+            </div>
+
+            <div class="copyright">
+                <p>© Праздник в каждый дом, 2025</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бронирование - Праздник в каждый дом</title>
+    <link href="/css.css" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Получаем выбранную зону из localStorage
+            const selectedZone = localStorage.getItem('selectedZone') || 'Зона не выбрана';
+            const selectedDate = localStorage.getItem('selectedDate') || 'Дата не выбрана';
+            const selectedChildren = localStorage.getItem('selectedChildren') || 'дети не выбрана';
+            const selectedAdults = localStorage.getItem('selectedAdults') || 'Взрослые не выбрана';
+            const selectedPrice = localStorage.getItem('selectedPrice') || 'Цена отсутствует';
+            const selectedRegion = localStorage.getItem('selectedRegion') || 'Регион не выбран';
+            document.querySelector('.zone-name').textContent = selectedZone;
+            document.querySelector('.ppl-value').textContent = `${selectedAdults} взрослых, ${selectedChildren} детей`;
+            document.querySelector('.date-value').textContent = selectedDate;
+            document.querySelector('.price-value').textContent = selectedPrice;
+            document.querySelector('.price1-value').textContent = selectedPrice;
+            document.querySelector('.region-name').textContent = selectedRegion;
+            
+            // Расчет стоимости
+            const servicesCheckboxes = document.querySelectorAll('.services-list input[type="checkbox"]');
+            const basePrice = Number(selectedPrice.split(' ')[0] + selectedPrice.split(' ')[1]);
+            const totalPriceElement = document.getElementById('total-price');
+            const servicesTotalElement = document.getElementById('services-total');
+            
+            function calculateTotal() {
+                let servicesTotal = 0;
+                servicesCheckboxes.forEach(checkbox => {
+                    if(checkbox.checked) {
+                        servicesTotal += parseInt(checkbox.value);
+                    }
+                });
+                
+                servicesTotalElement.textContent = servicesTotal;
+                totalPriceElement.textContent = basePrice + servicesTotal;
+            }
+            
+            servicesCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', calculateTotal);
+            });
+            
+            calculateTotal();
+        });
+    </script>
+    <link href="https://i.pinimg.com/736x/14/70/67/147067dd0bc6f00aec1ba41aedbe9d50.jpg" rel="icon">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://i.pinimg.com/736x/14/70/67/147067dd0bc6f00aec1ba41aedbe9d50.jpg" alt="Праздник в каждый дом"> Праздник в каждый дом
+            </div>
+            <nav class="main-menu">
+                <ul>
+                    <li><a href="/#promo">Акции</a></li>
+                    <li><a href="/#search">Поиск</a></li>
+                    <li><a href="/index.html">Главная страница</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main class="container booking-page">
+        <h1>Оформление бронирования</h1>
+        
+        <div class="booking-form">
+            <div class="order-summary">
+                <h2>Данные о заказе</h2>
+                <div class="order-details">
+                    <p><strong>Регион:</strong> <span class="region-name">Москва</span></p>
+                    <p><strong>Локация:</strong> Детский центр "Волшебный замок", ул. Праздничная, 15</p>
+                    <p><strong>Дата:</strong> <span class="date-value">22 май 2025</span></p>
+                    <p><strong>Количество гостей:</strong> <span class="ppl-value">5 взрослых, 10 детей</span></p>
+                    <p><strong>Выбранная зона:</strong> <span class="zone-name">Зона 3</span></p>
+                    <p><strong>Стоимость аренды:</strong> <span class="price-value">12 000 ₽</span></p>
+                </div>
+            </div>
+
+            <div class="additional-services">
+                <h2>Дополнительные услуги</h2>
+                <div class="services-list">
+                    <div class="service">
+                        <input type="checkbox" id="food" name="food" value="5000">
+                        <label for="food">Организация питания (5 000 ₽)</label>
+                    </div>
+                    <div class="service">
+                        <input type="checkbox" id="animators" name="animators" value="8000">
+                        <label for="animators">Услуги аниматоров (8 000 ₽)</label>
+                    </div>
+                    <div class="service">
+                        <input type="checkbox" id="host" name="host" value="6000">
+                        <label for="host">Услуги ведущего (6 000 ₽)</label>
+                    </div>
+                    <div class="service">
+                        <input type="checkbox" id="taxi" name="taxi" value="3000">
+                        <label for="taxi">Детское такси (3 000 ₽)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="customer-info">
+                <h2>Контактная информация</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="email">Email для подтверждения</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comments">Дополнительные пожелания</label>
+                        <textarea id="comments" name="comments" rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="total-summary">
+                <h2>Итоговая стоимость</h2>
+                <div class="total-details">
+                    <p><strong>Аренда зоны:</strong><span class="price1-value">12 000 ₽</span></p>
+                    <p><strong>Дополнительные услуги:</strong> <span id="services-total">0</span> ₽</p>
+                    <p class="total-price"><strong>Итого:</strong> <span id="total-price">12 000</span> ₽</p>
+                </div>
+                <button type="submit" class="confirm-booking">Подтвердить бронирование</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-phone">
+                <p>8 (800) 111-20-20</p>
+            </div>
+            
+            <div class="copyright">
+                <p>© Праздник в каждый дом, 2025</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

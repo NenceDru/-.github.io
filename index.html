@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Праздник в каждый дом - Организация детских праздников</title>
+   <link href="/css.css" rel="stylesheet">
+   <script src="/js.js" defer></script>
+   <link href="https://i.pinimg.com/736x/14/70/67/147067dd0bc6f00aec1ba41aedbe9d50.jpg" rel="icon">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://i.pinimg.com/736x/14/70/67/147067dd0bc6f00aec1ba41aedbe9d50.jpg" alt="Праздник в каждый дом"> Праздник в каждый дом
+            </div>
+            <nav class="main-menu">
+                <ul>
+                    <li><a href="#promo">Акции</a></li>
+                    <li><a href="#search">Поиск</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой-баннер -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Подарим волшебство для Ваших детей!</h1>
+            <p>Организуем незабываемый праздник с минимальными усилиями с вашей стороны</p>
+            <a href="#search" class="cta-button">Выбрать локацию</a>
+        </div>
+    </section>
+
+    <!-- Алгоритм бронирования -->
+    <section class="steps">
+        <div class="container">
+            <h2>Всего 6 шагов к незабываемому празднику</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <p>Выберите дату</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <p>Укажите количество гостей</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <p>Выберите локацию</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <p>Зарезервируйте зону</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <p>Добавьте услуги</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <p>Оформите заказ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>Наша цель</h2>
+                <p>Сделать праздничные дни незабываемыми для детей и их родителей</p>
+                <blockquote class="motto">
+                    Подарим волшебство для Ваших детей!
+                </blockquote>
+                
+                <div class="reviews">
+                    <!-- Здесь будет карусель с отзывами -->
+                    <p style="font-style: italic; margin-top: 30px;">"Организация праздника на высшем уровне! Дети в восторге, а мы смогли просто наслаждаться праздником." - Семья Ивановых</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма поиска -->
+    <section class="search-form" id="search">
+        <div class="container">
+            <h2>Найти идеальную локацию</h2>
+            <form action="result.html" method="GET">
+                <div class="form-group">
+                    <label for="region">Регион</label>
+                    <select id="region" name="region">
+                        <option value="moscow">Москва</option>
+                        <option value="spb">Санкт-Петербург</option>
+                        <option value="kazan">Казань</option>
+                        <option value="ekb">Екатеринбург</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Дата мероприятия</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Количество гостей</label>
+                    <div class="guests-selector">
+                        <div>
+                            <label for="adults">Взрослые</label>
+                            <input type="number" id="adults" name="adults" min="1" max="50" value="2">
+                        </div>
+                        <div>
+                            <label for="children">Дети</label>
+                            <input type="number" id="children" name="children" min="1" max="50" value="5">
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="search-button">Найти локации</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Акции -->
+    <section class="promo" id="promo">
+        <div class="container">
+            <h2>Специальные предложения</h2>
+            <div class="promo-carousel">
+                <div class="promo-card">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Акция 1">
+                    <h3>Скидка 20% на первый заказ</h3>
+                    <p>Для новых клиентов при бронировании от 10 гостей</p>
+                    <button class="promo-details">Подробнее</button>
+                </div>
+                <div class="promo-card">
+                    <img src="https://images.unsplash.com/photo-1531685250784-7569952593d2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Акция 2">
+                    <h3>Бесплатный аниматор</h3>
+                    <p>При заказе от 20 детей получите аниматора в подарок</p>
+                    <button class="promo-details">Подробнее</button>
+                </div>
+                <div class="promo-card">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Акция 3">
+                    <h3>Семейный пакет</h3>
+                    <p>Специальные условия для семейных праздников</p>
+                    <button class="promo-details">Подробнее</button>
+                </div>
+                <div class="promo-card">
+                    <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Акция 4">
+                    <h3>Раннее бронирование</h3>
+                    <p>Забронируйте за 3 месяца и получите скидку 15%</p>
+                    <button class="promo-details">Подробнее</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма подписки -->
+    <section class="subscription">
+        <div class="container">
+            <h2>Закрытые акции для подписчиков</h2>
+            <p>Подпишитесь и получайте эксклюзивные предложения первыми</p>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Ваш email" required>
+                <button type="submit">Подписаться</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-phone">
+                <p>8 (800) 111-20-20</p>
+            </div>
+          
+            <div class="copyright">
+                <p>© Праздник в каждый дом, 2025</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
