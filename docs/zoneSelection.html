@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Выбор зоны - Праздник в каждый дом</title>
-    <link href="CSS/css.css" rel="stylesheet">
-    <script src="JS/js.js" defer></script>
+    <link href="../CSS/css.css" rel="stylesheet">
+    <script src="../JS/js.js" defer></script>
     
     <script>
-        // Функция для получения параметров из URL и обновления информации
+       // Функция для получения параметров из URL и обновления информации
         var date = "";
         var adults = "";
         var children = "";
@@ -24,7 +24,7 @@
             // Обновляем информацию на странице
             const infoElement = document.getElementById('info-p');
             if (infoElement) {
-                infoElement.textContent = `ул. Праздничная, 15 • ${date} • ${adults} взрослых, ${children} детей`;
+                infoElement.textContent = `ул. Праздничная, 15 • ${formatDate(date)} • ${adults} взрослых, ${children} детей`;
             }
         }
         
@@ -32,14 +32,34 @@
             // Сохраняем выбранную зону в localStorage
             localStorage.setItem('selectedZone', zoneName);
             localStorage.setItem('selectedPrice', price);
-            localStorage.setItem('selectedDate', date);
+            localStorage.setItem('selectedDate', formatDate(date));
             localStorage.setItem('selectedChildren', children);
             localStorage.setItem('selectedAdults', adults);
             localStorage.setItem('selectedRegion', region);
             // Переходим на страницу бронирования
-            window.location.href = '/booking.html';
+            window.location.href = 'booking.html';
         }
         
+        // Преобразуем код региона в название
+        function getRegionName(regionCode) {
+            const regions = {
+                'moscow': 'Москва',
+                'spb': 'Санкт-Петербург',
+                'kazan': 'Казань',
+                'ekb': 'Екатеринбург'
+            };
+            return regions[regionCode] || regionCode;
+        }
+        
+        // Форматируем дату в привычный вид
+        function formatDate(dateString) {
+            if (!dateString) return 'Дата не указана';
+            
+            const date = new Date(dateString);
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            return date.toLocaleDateString('ru-RU', options);
+        }
+
         // Вызываем функцию при загрузке страницы
         window.onload = updateSearchInfo;
     </script>
@@ -53,9 +73,7 @@
             </div>
             <nav class="main-menu">
                 <ul>
-                    <li><a href="/#promo">Акции</a></li>
-                    <li><a href="/#search">Поиск</a></li>
-                    <li><a href="/index.html">Главная страница</a></li>
+                    <li><a href="index.html">Главная страница</a></li>
                 </ul>
             </nav>
         </div>
